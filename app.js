@@ -14,52 +14,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let timerId
     let tetScore = 0
-
-    // Setting a variable for the colors of each TetroPiece in order below
-    const tetColors = [
-        'pink', // color for the zTetroPiece
-        'purple', // color for the tTetroPiece
-        'skyblue', // color for the iTetroPiece
-        'green', // color for the lTetroPiece
-        'yellow' // color for the oTetroPiece
-    ]
     
     //The Tetro Pieces
    
-    const zTetroPiece = [
-        [0, width+1, width*2+1],
-        [width+1, width+2, width*2, width*2+1],
-        [0, width+1, width*2+1],
-        [width+1, width+2, width*2, width*2+1]
-    ]
+    const zTetroPiece = {
+        colorClass: 'zPiece',
+        shapeArray: [
+            [0, width, width+1, width*2+1],
+            [width+1, width+2, width*2, width*2+1],
+            [0, 10, 11, 21],
+            [width+1, width+2, width*2, width*2+1]
+        ]
+    }
 
-    const tTetroPiece = [ 
-        [1, width, width+1, width+2],
-        [1, width+1, width+2, width*2+1],
-        [width, width+1, width+2, width*2+1],
-        [1, width, width+1, width*2+1]
-    ]
 
-    const iTetroPiece = [
-        [1, width+1, width*2+1, width*3+1],
-        [width, width+1, width+2, width+3],
-        [1, width+1, width*2+1, width*3+1],
-        [width, width+1, width+2, width+3]
-    ]
+    const tTetroPiece = {
+        colorClass: 'tPiece',
+        shapeArray: [
+            [1, width, width+1, width+2],
+            [1, width+1, width+2, width*2+1],
+            [width, width+1, width+2, width*2+1],
+            [1, width, width+1, width*2+1]
+        ]
+    }
 
-    const lTetroPiece = [
-        [1, width+1, width*2+1, 2],
-        [width, width+1, width+2, width*2+2],
-        [1, width+1, width*2+1, width*2],
-        [width, width*2, width*2+1, width*2+2]
-    ]
 
-    const oTetroPiece = [ // oTetropiece stays the same, no rotations
-        [0, 1, width, width+1],
-        [0, 1, width, width+1],
-        [0, 1, width, width+1],
-        [0, 1, width, width+1]
-    ]
+    const iTetroPiece = {
+        colorClass: 'iPiece',
+        shapeArray: [
+            [1, width+1, width*2+1, width*3+1],
+            [width, width+1, width+2, width+3],
+            [1, width+1, width*2+1, width*3+1],
+            [width, width+1, width+2, width+3]
+        ]
+    }
+
+    const lTetroPiece = {
+        colorClass: 'lPiece',
+        shapeArray: [
+            [1, width+1, width*2+1, 2],
+            [width, width+1, width+2, width*2+2],
+            [1, width+1, width*2+1, width*2],
+            [width, width*2, width*2+1, width*2+2]
+        ]
+    }
+
+    const oTetroPiece = {
+        colorClass: 'oPiece',
+        shapeArray: [
+            [0, 1, width, width+1],
+            [0, 1, width, width+1],
+            [0, 1, width, width+1],
+            [0, 1, width, width+1]
+        ]
+    }
 
     const theTetroPieces = [zTetroPiece, tTetroPiece, iTetroPiece, lTetroPiece, oTetroPiece]
 
@@ -68,21 +76,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Here selects a random TetroPiece and first rotation
     let random = Math.floor(Math.random()*theTetroPieces.length)
-    let current = theTetroPieces[random][currentRotation]
+
+    let activePiece = theTetroPieces[random];
+    let current = activePiece.shapeArray[currentRotation];
+
+
+    // let current = theTetroPieces[random][currentRotation];
     
     // Drawing out the TetroPiece
     function drawTet() {
+        
+        /* current.shapeArray.forEach({same logic as below, just accessed through dot notation first}) */
         current.forEach(index => {
-            grids[currentPosition + index].classList.add('tetropiece')
-            grids[currentPosition + index].style.backgroundColor = tetColors[random]
+            grids[currentPosition +index].classList.add(activePiece.colorClass);
         })
     }
 
     // Undrawing the TetroPiece
     function undrawTet(){
-        current.forEach(index => {
-            grids[currentPosition + index].classList.remove('tetropiece')
-            grids[currentPosition + index].style.backgroundColor = ''
+            current.forEach(index => {
+            grids[currentPosition + index].classList.remove(activePiece.colorClass)
         })
     }
 
@@ -120,7 +133,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Create a new tetroPiece coming down
             random = otherRandom
             otherRandom = Math.floor(Math.random() * theTetroPieces.length) 
-            current = theTetroPieces[random][currentRotation]
+
+            // current = theTetroPieces[random][currentRotation]
+            activePiece = theTetroPieces[random];
+            current = activePiece.shapeArray[currentRotation];
+            
             currentPosition = 4
             drawTet() // drawing new random tetroPiece
             showShapeTet()
@@ -164,7 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if(currentRotation === current.length) { // if the currentRotation reaches 4, reset it back to 0
             currentRotation = 0
         }
-        current = theTetroPieces[random][currentRotation]
+        activePiece = theTetroPieces[random];
+        current = activePiece.shapeArray[currentRotation];
+        // current = theTetroPieces[random][currentRotation]
         drawTet()
     }
 
@@ -221,10 +240,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 showScore.innerHTML = tetScore //shows the score(tetScore)
                 row.forEach(index => { //forEach item of the row, removing the class 'occupied'
                     grids[index].classList.remove('occupied')
-                    grids[index].classList.remove('tetropiece')
-                    grids[index].style.backgroundColor = ''
+                    // grids[index].classList.remove('tetropiece')
+                    // grids[index].style.backgroundColor = ''
                 })
                 const removeGrids = grids.splice(i, width) //removing the row using the splice method
+                removeGrids.forEach(cell => {
+                    cell.classList.remove('zPiece','tPiece', 'iPiece', 'lPiece', 'oPiece');
+                })
                 grids = removeGrids.concat(grids)
                 grids.forEach(cell => grid.appendChild(cell)) //append new grids for the grid
             }

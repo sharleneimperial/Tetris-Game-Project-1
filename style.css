@@ -158,8 +158,8 @@ align-items: center;
     align-items: center;
     margin-top: 230px;
     justify-content: center;
-    width: 200vw;
-    height: 200vh;
+    width: 100vw;
+    height: 100vh;
     border-radius: 50%;
     transition: all 0.8s ease;
     
@@ -168,6 +168,7 @@ align-items: center;
 body {
     background-image: url(https://i.imgur.com/5gjyJjN.jpg);
     background-size: 100%;
+    max-height: 100%;
 }
 
 h3 {
@@ -193,6 +194,26 @@ h3 {
 .tetropiece {
     background-color: pink;
 }
+
+/* .zPiece {
+  background-color: pink;
+}
+
+.tPiece {
+  background-color: purple;
+}
+
+.iPiece {
+  background-color: skyblue;
+}
+
+.lPiece {
+  background-color: green;
+}
+
+.oPiece {
+  background-color: yellow;
+} */
 
 .rulesOfGame {
     font-size: 20px;
@@ -238,3 +259,22 @@ h1 {
     text-shadow: 2px 2px 8px purple;
 }
 
+.zPiece {
+  background-color: pink;
+}
+
+.tPiece {
+  background-color: white;
+}
+
+.iPiece {
+  background-color: skyblue;
+}
+
+.lPiece {
+  background-color: green;
+}
+
+.oPiece {
+  background-color: yellow;
+}
