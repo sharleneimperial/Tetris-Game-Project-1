@@ -14,6 +14,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let timerId
     let tetScore = 0
+
+
+      // Setting a variable for the colors of each TetroPiece in order below
+      const tetColors = [
+        'pink', // color for the zTetroPiece
+        'purple', // color for the tTetroPiece
+        'skyblue', // color for the iTetroPiece
+        'green', // color for the lTetroPiece
+        'yellow' // color for the oTetroPiece
+    ]
     
     //The Tetro Pieces
    
@@ -104,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // The controls, assigning the functions to keycodes
     function controls(e) {
+        e.preventDefault()
         if(e.keyCode === 37) {
             goLeft()
         } else if (e.keyCode === 38) {
@@ -114,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             goDown()
         }
     }
-    document.addEventListener('keyup', controls)
+    document.addEventListener('keydown', controls)
 
     // The  goDown function
     function goDown() {
@@ -270,7 +281,3 @@ document.addEventListener('DOMContentLoaded', () => {
       })
     
     })
-
-
-
-
