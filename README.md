@@ -3,7 +3,7 @@
 # Sharlene's Game of Tetris
 Project 1 
 A demo of the Sharlene's Tetris Game running:
-![](https://giphy.com/embed/or2gRb0oyZQymPetZP)
+![](https://media.giphy.com/media/or2gRb0oyZQymPetZP/giphy.gif)
 
 
 ## Technical Requirements
