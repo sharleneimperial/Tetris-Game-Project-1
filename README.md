@@ -2,10 +2,9 @@
 
 # Sharlene's Game of Tetris
 Project 1 
-```javascript
 A demo of the Sharlene's Tetris Game running:
 ![](https://i.imgur.com/mx9GOos.mp4)
-```
+
 
 ## Technical Requirements
 *Technical Requirements
@@ -268,9 +267,8 @@ In HTML:
     })
 ```
 Screenshot of Game Over(when all pieces are stacked to the top)
-```javascript
     ![](https://i.imgur.com/Lmwp02g.jpg)
-```
+
 
 
 
