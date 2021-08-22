@@ -10,53 +10,50 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="menuWrap">
-    <input type="checkbox" class="transfer">
-    <div class="tetrisMenu">
-      <div></div>
-    </div>
-    <div class="menuMain">
-      <div class="menuInfo">
-        <h2 class="howToPlay">How To Play:</h2>
-        <p class="rulesOfGame"> Press the <b class="ruleKey">UP</b> key to rotate your tetropiece, press the <b class="ruleKey">LEFT</b>
-          and <b class="ruleKey">RIGHT</b> to <br> move across the board. Pressing on the <b class="ruleKey">DOWN</b> key will accelerate the
-          tetropieces down.
-        <br>Enjoy The Game!</b></p>
-        <button class="closeXButton">X</button>
-      </div>
-    </div>
-  </div>
+  
 
   <header>
     <h1 class="welcome">Welcome to<br>Sharlene's Tetris Game!</h1>
   </header>
-  
-  <h3>Your Score :<span id="thescore">0</span></h3>
-
-  <!--Tetris music plays when the Start/Pause button is pressed, and stops when pressed again-->  
-  <button id="startButton" onClick="startPause()"> 
-  <audio src="audio/tetris-gameboy-02.mp3" 
-  autoplay
-  loop></audio>Start/Pause</button>
-
-  <script>
-    var aud = document.getElementById("startButton").children[0];
-    var isPlaying = false;
-    aud.volume = 0.2;
-    aud.pause();
-
-    function startPause() {
-      if (isPlaying) {
-        aud.pause();
-      } else {
-        aud.play();
-      }
-      isPlaying = !isPlaying;
-    }
-  </script>
-  
-
-
+  <h3>Your Score :<span id="score">0</span></h3>
+  <button id="instructions">Instructions</button>
+    <!--Button for instructions -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p><b class="howToPlay">How To Play:</b><br>⬆️ Arrow <b class="ruleKey">UP</b> key: Rotates the Tetropiece<br> ⬅️Arrow <b class="ruleKey">LEFT</b> key: Moves The Tetropiece Left<br> ➡️Arrow <b class="ruleKey">RIGHT</b> key: Moves The Tetropiece Right<br> 
+            ⬇️ Arrow <b class="ruleKey">DOWN</b> key: Speeds Up The Tetropiece's Fall<br> This game is never-ending, so play and score<br> 
+            as many points as you possibly can!<br> Any horizontal line breaks is worth 10 points each.<br> Play until you drop!😄<br> 
+            Enjoy The Game and Thanks For Playing!!😃
+          </p>
+      </div>
+    </div>
+    <div id="button-container">
+        
+        <!--Listen to the awesome original Tetris Music from the Gameboy-->
+        <button id="startButton" onClick="startPause()"> 
+            <audio src="audio/tetris-gameboy-02.mp3" 
+            autoplay
+            loop></audio>Start/Pause</button>
+            <button id="reset">Reset</button>
+          
+            <script>
+              var aud = document.getElementById("startButton").children[0];
+              var isPlaying = false;
+              aud.volume = 0.2;
+              aud.pause();
+          
+              function startPause() {
+                if (isPlaying) {
+                  aud.play();
+                } else {
+                  aud.pause();
+                }
+                isPlaying = !isPlaying;
+              }
+            </script>
+              
+             
   <div class="container1">
   <div class="grid">
     <div></div> 
@@ -298,6 +295,7 @@
     <main>
       <canvas id='tetris' width="200" height="400"></canvas>
   </main>
+
   
 </body>
 </html>

@@ -3,30 +3,50 @@ document.addEventListener('DOMContentLoaded', () => {
     // Array.from collects the divs in the grid and turns them into an array.
     let grids = Array.from(document.querySelectorAll('.grid div')) //collecting all the divs inside the element w/ class names of .grid
     const width = 10
+    const canvas = document.getElementById("tetris");
+    const ctx = canvas.getContext("2d");
     let otherRandom = 0
-    const showScore = document.querySelector('#thescore')
+    const score = document.querySelector('#score')
     const startButton = document.querySelector('#startButton')
-    const tetrisMenu = document.querySelector('.transfer')
-    const menu = document.querySelector('.menuMain')
-    const span = document.getElementsByClassName('closeXButton')[0]
+    const modal = document.getElementById("myModal");
+    const instructionsButton = document.getElementById("instructions");
+    const span = document.getElementsByClassName("close")[0];
+    const resetButton = document.getElementById("reset");
 
-    
+    ctx.scale(20, 20);
 
     let timerId
     let tetScore = 0
+      
+      resetButton.addEventListener("click", () => {
+        location.reload();
+      });
+      
+      instructionsButton.addEventListener("click", () => {
+        modal.style.display = "block";
+      });
+      
+      span.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+      
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
 
 
-      // Setting a variable for the colors of each TetroPiece in order below
-      const tetColors = [
+    // Setting a variable for the colors of each TetroPiece in order below
+    const tetColors = [
         'pink', // color for the zTetroPiece
-        'purple', // color for the tTetroPiece
+        'white', // color for the tTetroPiece
         'skyblue', // color for the iTetroPiece
         'green', // color for the lTetroPiece
         'yellow' // color for the oTetroPiece
     ]
     
-    //The Tetro Pieces
-   
+    //The Tetro Pieces by colorClass and shapes of each rotation of the piece in each array
     const zTetroPiece = {
         colorClass: 'zPiece',
         shapeArray: [
@@ -37,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
     }
 
-
     const tTetroPiece = {
         colorClass: 'tPiece',
         shapeArray: [
@@ -47,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
             [1, width, width+1, width*2+1]
         ]
     }
-
 
     const iTetroPiece = {
         colorClass: 'iPiece',
@@ -99,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         /* current.shapeArray.forEach({same logic as below, just accessed through dot notation first}) */
         current.forEach(index => {
             grids[currentPosition +index].classList.add(activePiece.colorClass);
-        })
+            })
     }
 
     // Undrawing the TetroPiece
@@ -133,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPosition += width // currentPosition and add a whole width from the currentPosition
         drawTet() // draw once again its currentPosition
         freezeTet() // adding the freezeTet to the move down function so that it invokes check every second
+        
     }
 
     // Here is the freezeTet function
@@ -248,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if(row.every(index => grids[index].classList.contains('occupied'))) { // if every grids in the defined row contains a div with the class of occupied and is true
                 tetScore +=10 // then add 10 points to the score
-                showScore.innerHTML = tetScore //shows the score(tetScore)
+                score.innerHTML = tetScore //shows the score(tetScore)
                 row.forEach(index => { //forEach item of the row, removing the class 'occupied'
                     grids[index].classList.remove('occupied')
                     // grids[index].classList.remove('tetropiece')
@@ -267,17 +286,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // The Game Over function
     function gameOverTet() { 
         if(current.some(index => grids[currentPosition + index].classList.contains('occupied'))) { //if the current tetropiece position contains the class of 'occupied' then it's Game Over
-            showScore.innerHTML = 'Game Over' //then it will be shown Game over in the Your score section
+            score.innerHTML = 'Game Over' //then it will be shown Game over in the Your score section
             clearInterval(timerId) //then timerId is cleared, when the goDown function comes to a stop
+            aud.pause();
         }
     }
-
-    // Styles to the eventListeners menu display
-    tetrisMenu.addEventListener('click', () => {
-        menu.style.display = 'flex'
-      })
-      span.addEventListener('click', () => {
-        menu.style.display = 'none'
-      })
-    
     })
+

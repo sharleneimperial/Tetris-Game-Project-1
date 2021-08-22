@@ -7,7 +7,6 @@
   flex-wrap: wrap;
   background-color: purple;
   border: 5px solid white;
-
 }
 
 .smallGrid {
@@ -34,7 +33,6 @@
   width: 20px;
   justify-content: center;
   align-items: center;
-  
 }
 
 .container1 {
@@ -43,98 +41,11 @@ justify-content: center;
 align-items: center;
 }
 
-
 .container {
   max-width: 600px;
   padding: 0 3rem;
   margin: auto;
   overflow: hidden;
-}
-
-.btn:hover {
-  opacity: 0.7;
-}
-
-/* Styling the menu */
-.menuWrap {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;  
-}
-
-.menuWrap .transfer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  width: 50px;
-  height: 50px;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.menuWrap .tetrisMenu {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  display: flex;
-  width: 40px;
-  height: 40px;
-  padding: 1rem;
-  background: rgba(92, 54, 114, 0.75);
-  align-items: center;
-  justify-content: center;
-}
-
-/* tetrisMenu Line */
-.menuWrap .tetrisMenu > div {
-  position: relative;
-  display: flex;
-  width: 150%;
-  height: 2px;
-  background: #fff;
-  flex: none;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.4s ease;
-  
-}
-
-/* tetrisMenu Lines - The Top & Bottom */
-.menuWrap .tetrisMenu > div:before,
-.menuWrap .tetrisMenu > div:after {
-  position: absolute;
-  top: -7px;
-  z-index: 1;
-  width: 100%;
-  height: 2px;
-  background: inherit;
-  content: "";
-  border: 3px solid skyblue;
-}
-
-/* Moves Line Down */
-.menuWrap .tetrisMenu > div:after {
-  top: 7px;
-}
-
-/* Transfer the Animation */
-.menuWrap .transfer:checked + .tetrisMenu > div {
-  transform: rotate(135deg); /* transform rotate function to 135 degrees*/
-}
-
-/* Upper Left part of menuWrap Turns Lines Into X */
-.menuWrap .transfer:checked + .tetrisMenu > div:before,
-.menuWrap .transfer:checked + .tetrisMenu > div:after {
-  top: 0;
-  transform: rotate(90deg); /* transform rotate function to 90 degress */
-}
-
-/* when its checked, it will rotate on hover */
-.menuWrap .transfer:checked:hover + .tetrisMenu > div {
-  transform: rotate(225deg); /*transform rotate to 225 degrees */
 }
 
 .menuMain {
@@ -148,8 +59,6 @@ align-items: center;
   height: 100%;
   overflow: auto;
   background-color: rgba(24, 39, 51, 0.85);
-  
-  
 }
 
 .menuInfo {
@@ -162,8 +71,7 @@ align-items: center;
   height: 100vh;
   border-radius: 50%;
   transition: all 0.8s ease;
-  
-}
+} 
 
 body {
   background-image: url(https://i.imgur.com/5gjyJjN.jpg);
@@ -178,62 +86,6 @@ h3 {
   font-size: 30px;
   text-align: center;
   text-shadow: 2px 2px 8px white;
-}
-
-#startButton {
-  font-family: 'Papyrus';
-  font-weight: bold;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 3px solid skyblue;
-  
-}
-
-.tetropiece {
-  background-color: pink;
-}
-
-/* .zPiece {
-background-color: pink;
-}
-.tPiece {
-background-color: purple;
-}
-.iPiece {
-background-color: skyblue;
-}
-.lPiece {
-background-color: green;
-}
-.oPiece {
-background-color: yellow;
-} */
-
-.rulesOfGame {
-  font-size: 20px;
-  transition: color 0.4s ease;
-  color: white;
-  font-family:'Papyrus';
-}
-
-.howToPlay {
-  font-family: 'Papyrus';
-  font-weight: bold;
-  color: white;
-}
-
-.ruleKey {
- color: #2fad0f;
- text-decoration: underline;
-
-}
-
-.closeXButton {
-  border-radius: 2px;
-  color: rgba(44, 22, 71, 0.85);
-  
 }
 
 h1 {
@@ -274,3 +126,105 @@ background-color: green;
 .oPiece {
 background-color: yellow;
 }
+
+#instructions {
+  background-color: purple;
+  color: white;
+  padding: 0.5em;
+  margin: 0px 0px 25px 0px;
+  font-family: 'Papyrus';
+  font-size: 18px;
+  font-weight: bold;
+  border: 3px solid white;
+}
+
+#startButton {
+  font-family: 'Papyrus';
+  font-weight: bold;
+  font-size: 20px;
+  border: 3px solid skyblue;
+  background-color: blue;
+  color: white;
+  width: 175px;
+  height: 40px;
+}
+
+#reset {
+  background-color: red;
+  color: white;
+  font-family: 'Papyrus';
+  border: 3px solid white;
+  font-size: 19px;
+  font-weight: bold;
+  width: 175;
+  height: 40px;
+}
+
+#startButton:hover, #instructions:hover, #reset:hover {
+  box-shadow: 0 12px 16px 0 rgba(174, 233, 210, 0.24), 0 17px 50px 0 rgba(255, 255, 255, 0.19);
+}
+
+#startButton, #instructions, #reset {
+    display:inline-block;
+}
+
+/*The Modal Background*/
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: white;
+  background-color: rgba(14, 13, 13, 0.4); 
+}
+
+/*The Modal Content*/
+.modal-content {
+  background-image: url('https://i.imgur.com/8T4b8Om.gif');
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/*The Close Button*/
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+p {
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Papyrus';
+    font-weight: bold;
+}
+
+.ruleKey {
+  color: #dfb21e;
+  text-decoration: underline;
+ } 
+
+ .howToPlay {
+   color: white;
+   font-family: 'Papyrus';
+   font-size: 28px;
+   font-weight: bold;
+   text-shadow: 2px 2px 8px white;
+ }
+ 
