@@ -1,8 +1,6 @@
-# Tetris-Game-Project-1
-
-# Sharlene's Game of Tetris
+# Imperial Tetris
 Project 1 
-A demo of the Sharlene's Tetris Game running:
+A demo of the Imperial Tetris Game running:
 ![](https://media.giphy.com/media/or2gRb0oyZQymPetZP/giphy.gif)
 
 
