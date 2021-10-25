@@ -1,5 +1,4 @@
 # Imperial Tetris
-Project 1 
 A demo of the Imperial Tetris Game running:
 ![](https://media.giphy.com/media/or2gRb0oyZQymPetZP/giphy.gif)
 
